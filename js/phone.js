@@ -33,13 +33,27 @@ const displayPhones = phones =>{
     </div>
     `;
     phoneContainer.appendChild(phoneDiv); 
-   })
+   });
+   // stop loader
+   toggleSpinner(false)
 }
 
-
+// search button handler
 document.getElementById('btn-search').addEventListener('click', function(){
+   // start loader
+   toggleSpinner(true)
    const searchField = document.getElementById('search-field');
    const searchText = searchField.value ;
    loadPage(searchText)
 })
-loadPage('phone')
+
+const toggleSpinner = isLoading =>{
+   const loaderSection = document.getElementById('loader');
+   if(isLoading){
+      loaderSection.classList.remove('d-none');
+   }
+   else{
+      loaderSection.classList.add('d-none')
+   }
+}
+loadPage('')
